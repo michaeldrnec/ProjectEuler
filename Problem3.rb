@@ -1,20 +1,13 @@
 class Problem3
 	def AmIPrime(theNumber)
-		amIDone = false
-		divisor = theNumber - 1
-		while (amIDone == false) do
-			if (divisor == 1)
-				return divisor
-			else
-				if (theNumber % divisor == 0)
-					if (FindLargestFactorOfPrime(divisor) == 1)
-						return divisor
-					end
-				end
+		i = 2
+		while (i < theNumber) do
+			if (theNumber % i == 0)
+				return false
 			end
-			divisor = divisor - 1
+			i = i + 1
 		end
-		return divisor
+		return true
 	end
 	
 	def FindLargestFactorOfPrime(theNumber)
@@ -29,14 +22,17 @@ class Problem3
 				if (tempNumber % candidate == 0)
 					if (AmIPrime(candidate) == true)
 						tempNumber = tempNumber / candidate
+						divisor = candidate
 					end
+				else
+					candidate = candidate + 1
 				end
 			end
 		end
 	end
-	
 end
 
 problem = Problem3.new
 puts "The Answer Is:"
+puts problem.FindLargestFactorOfPrime(4)
 puts problem.FindLargestFactorOfPrime(600851475143)
