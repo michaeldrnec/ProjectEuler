@@ -17,6 +17,9 @@ class Problem3
 		tempNumber = theNumber
 		while (amIDone == false) do
 			if (candidate >= tempNumber)
+        if (AmIPrime(candidate))
+            return candidate
+        end
 				return divisor
 			else
 				if (tempNumber % candidate == 0)
@@ -34,5 +37,5 @@ end
 
 problem = Problem3.new
 puts "The Answer Is:"
-puts problem.FindLargestFactorOfPrime(4)
+puts problem.FindLargestFactorOfPrime(6)
 puts problem.FindLargestFactorOfPrime(600851475143)
