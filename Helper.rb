@@ -10,12 +10,20 @@ class String
 	end
 end
 
+class Array
+	def sum
+		inject( nil ) { |sum,x| sum ? sum+x : x }
+	end
+end
+
 class Primes
 	def GeneratePrimesToNumber(value)
-		sieve = Array.new
-		for i in (1..value)
-			sieve << i
-		end
+		sieve = GetSieve(value)
+		ComputePrimes(sieve, value)
+		return CoalesceSieveArray(sieve)
+	end
+	
+	def ComputePrimes(sieve, value)
 		start = 2
 		while (start * start <= value)
 			current = start * start
@@ -25,10 +33,21 @@ class Primes
 			end
 			start = start + 1
 		end
+	end
+	
+	def GetSieve(value)
+		sieve = Array.new
+		for i in (1..value)
+			sieve << i
+		end
+		return sieve
+	end
+	
+	def CoalesceSieveArray(sieveArray)
 		answers = Array.new
-		for x in (2..sieve.length)
-			if (sieve[x-1] != 0)
-				answers << sieve[x-1]
+		for x in (2..sieveArray.length)
+			if (sieveArray[x-1] != 0)
+				answers << sieveArray[x-1]
 			end
 		end
 		return answers
