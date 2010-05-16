@@ -4,19 +4,18 @@ class Problem4
   end
   
   def TheAnswer()
-	leftSide = 999
-	rightSide = 999
-	while (leftSide > 0) do
-		mult = leftSide * rightSide
-		if (IsPalindrome(mult))
-			return mult
+	leftSide = 500
+	rightSide = 500
+	answer = 0
+	for i in (500..999)
+		for j in (500..999)
+			mult = i * j;
+			if (IsPalindrome(mult) && mult > answer)
+				answer = mult
+			end
 		end
-		temp = leftSide
-		leftSide = rightSide
-		rightSide = temp
-		leftSide = leftSide - 1
 	end
-	return 0
+	return answer
   end
 end
 

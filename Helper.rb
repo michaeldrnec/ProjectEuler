@@ -8,6 +8,10 @@ class String
 	def sum_chars
 		split("").inject(0) {|sum, n| sum + (n[0] - 64)}
 	end
+	
+	def product_as_ints
+		split("").inject(1) {|product, n| product * (n.to_i)}
+	end
 end
 
 class Array
