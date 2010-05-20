@@ -2,6 +2,10 @@ class Integer
 	def sum_digits
 		to_s.split("").inject(0) {|sum, n| sum + n.to_i}
 	end
+	
+	def first_x_digits(x)
+		to_s[1..x]
+	end
 end
 
 class String
@@ -11,6 +15,10 @@ class String
 	
 	def product_as_ints
 		split("").inject(1) {|product, n| product * (n.to_i)}
+	end
+	
+	def sum_digits
+		split("").inject(0) {|sum, n| sum + n.to_i}
 	end
 end
 
